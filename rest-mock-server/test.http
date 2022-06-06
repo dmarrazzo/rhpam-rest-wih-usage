@@ -1,0 +1,22 @@
+# REST Client for Visual Studio Code
+# https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+
+### local credentials
+@auth = donato:donato
+
+### local kie server
+@rest-server-host=localhost:4010
+
+#####
+# Complete "Supplier Approve and Sign" task
+# - rejection path 
+POST http://{{rest-server-host}}/order
+Authorization: Basic {{auth}}
+Accept: application/json
+Content-Type: application/json
+
+{
+    "item": "phone",
+    "quantity": 1,
+    "price": 190
+}

@@ -1,0 +1,29 @@
+openapi: 3.0.2
+info:
+    title: Order API
+    version: 1.0.0
+    description: Simple Order API
+paths:
+    /order:
+        post:
+            requestBody:
+                description: send order
+                content:
+                    application/json:
+                        examples:
+                            phone-order:
+                                value:
+                                    item: phone
+                                    quantity: 1
+                                    price: 190
+                required: true
+            responses:
+                '200':
+                    content:
+                        application/json:
+                            examples:
+                                example:
+                                    value:
+                                        delivery: normal
+                                        total: 190
+                    description: order received
