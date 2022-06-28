@@ -1,0 +1,14 @@
+[
+  [
+    "name" : "Camel",
+    "displayName" : "Camel",
+    "category" : "integration",
+    "parameters" : [
+        "Input" : new StringDataType()
+    ],
+    "results" : [
+      "Output" : new StringDataType()
+    ],
+    "icon" : "../../../../global/Camel.png"
+  ]
+]

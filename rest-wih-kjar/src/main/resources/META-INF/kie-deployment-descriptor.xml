@@ -16,6 +16,12 @@
       <parameters />
       <name>Rest</name>
     </work-item-handler>
+    <work-item-handler>
+      <resolver>spring</resolver>
+      <identifier>CamelWIH</identifier>
+      <parameters />
+      <name>Camel</name>
+    </work-item-handler>
   </work-item-handlers>
   <environment-entries />
   <configurations />
