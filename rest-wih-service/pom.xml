@@ -23,7 +23,7 @@
     <fabric8.version>3.5.40</fabric8.version>
     <version.io.swagger>1.6.2</version.io.swagger>
     <version.org.apache.cxf>3.3.9.redhat-00001</version.org.apache.cxf>
-    <version.org.webjars.swagger-ui>2.2.10</version.org.webjars.swagger-ui>
+    <version.org.webjars.swagger-ui>3.0.10</version.org.webjars.swagger-ui>
   </properties>
 
   <dependencies>
