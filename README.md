@@ -86,3 +86,58 @@ podman run --rm -it -v ./rest-mock-server:/root/apis:Z -p 4010:4010 stoplight/pr
 In the **Process Definition** page, select the process and start it.
 
 The provided information will be passed to the REST service and the responce is mapped back in the process variable.
+
+## SpringBoot deployment
+
+Create springboot service project:
+
+```sh
+mvn archetype:generate -B -DarchetypeGroupId=org.kie -DarchetypeArtifactId=kie-service-spring-boot-archetype -DarchetypeVersion=7.59.0.Final-redhat-00009 -DgroupId=com.redhat.demo -DartifactId=rest-wih-service -Dversion=1.0-SNAPSHOT -Dpackage=com.redhat.demo.service -DappType=bpm
+```
+
+Define the kjar deployment in `application.properties`.
+
+Add the plugin for KJAR module static deployment (See [](rest-wih-service/pom.xml))
+
+Further information on the RHPAM SpringBoot deployment:
+[Creating Red Hat Process Automation Manager business applications with Spring Boot](https://access.redhat.com/documentation/en-us/red_hat_process_automation_manager/7.12/html-single/integrating_red_hat_process_automation_manager_with_other_products_and_components/index#assembly-springboot-business-apps)
+
+### WIH
+
+Create the project:
+
+```sh
+mvn archetype:generate \
+  -DgroupId=com.redhat.example \
+  -DartifactId=camel-wih \
+  -DarchetypeArtifactId=maven-archetype-quickstart \
+  -DinteractiveMode=false
+```
+
+Add the dependencies:
+
+- `jbpm-workitem-core`
+- spring boot
+- camel fuse
+
+Key elements Java implementations:
+
+- Camel Route
+- WorkItemHandler which initialize Camel Framework and trigger the route.
+
+### KJAR
+
+Inside the KJAR:
+
+- Add the WIH definition in `kie-deployment-descriptor`
+- Add the wid file in the BPMN folder
+
+### Test the process
+
+```sh
+curl -u controllerUser:controllerUser1234\; --request POST \
+  --url http://localhost:8090/rest/server/containers/rest-wih-kjar/processes/rest_call/instances \
+  --header 'accept: application/json' \
+  --header 'content-type: application/json' \
+  --data '{"order" : {"com.redhat.demo.Order" : {"item" : "phone","quantity" : 4,"price" : 120.0}}}'
+```

@@ -9,7 +9,6 @@
   <properties>
     <version.org.kie>7.59.0.Final-redhat-00009</version.org.kie>
     <fuse.version>7.10.0.fuse-sb2-7_10_1-00008-redhat-00001</fuse.version>
-    <version.org.apache.camel>2.23.2.fuse-7_10_1-00008-redhat-00001</version.org.apache.camel>
     <maven.compiler.target>11</maven.compiler.target>
     <maven.compiler.source>11</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
