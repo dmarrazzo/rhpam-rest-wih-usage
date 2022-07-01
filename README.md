@@ -134,6 +134,8 @@ Inside the KJAR:
 
 ### Test the process
 
+The following command trigger the rest process, replace `rest_call` with `camel_rest_call` to trigger the process with the _Camel WIH_.
+
 ```sh
 curl -u controllerUser:controllerUser1234\; --request POST \
   --url http://localhost:8090/rest/server/containers/rest-wih-kjar/processes/rest_call/instances \
