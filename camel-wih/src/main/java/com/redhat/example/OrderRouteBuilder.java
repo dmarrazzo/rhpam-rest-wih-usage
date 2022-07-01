@@ -18,8 +18,7 @@ public class OrderRouteBuilder extends RouteBuilder {
         from("direct:start").id("java-rest")
             .setHeader("Accept").constant("application/json")
             .to("rest:post:order")
-            .unmarshal().json(JsonLibrary.Jackson, OrderResponse.class)
-            .to("log:DEBUG?showBody=true&showHeaders=true");
+            .unmarshal().json(JsonLibrary.Jackson, OrderResponse.class);
     }
 
 }

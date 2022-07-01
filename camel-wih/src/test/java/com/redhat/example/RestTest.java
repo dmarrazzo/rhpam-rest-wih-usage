@@ -1,12 +1,9 @@
 package com.redhat.example;
 
-import java.util.concurrent.TimeUnit;
-
 import org.apache.camel.Exchange;
 import org.apache.camel.ProducerTemplate;
 
 import com.redhat.demo.Order;
-import com.redhat.demo.OrderResponse;
 
 public class RestTest {
 
@@ -27,7 +24,7 @@ public class RestTest {
                     .withBody(order)
                     .build();
             template.send("direct:start", exchange);
-            System.out.println(exchange.getIn().getBody());
+            System.out.println(exchange.getOut().getBody());
 
         } catch (Exception e) {
             e.printStackTrace();
