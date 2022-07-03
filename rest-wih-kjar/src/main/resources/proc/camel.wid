@@ -4,10 +4,11 @@
     "displayName" : "Camel",
     "category" : "integration",
     "parameters" : [
-        "Input" : new StringDataType()
+        "endpointUri" : StringDataType(),
+        "Input" : new ObjectDataType()
     ],
     "results" : [
-      "Output" : new StringDataType()
+      "Output" : new ObjectDataType()
     ],
     "icon" : "../../../../global/Camel.png"
   ]

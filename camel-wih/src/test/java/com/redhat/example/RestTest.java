@@ -13,7 +13,6 @@ public class RestTest {
             CamelInit camelInit = new CamelInit();
             camelInit.init();
             OrderRouteBuilder routeBuilder = new OrderRouteBuilder();
-            routeBuilder.setServiceOrderUrl("localhost:4010");
             camelInit.addRoutes(routeBuilder);
             ProducerTemplate template = camelInit.createProducerTemplate();
 

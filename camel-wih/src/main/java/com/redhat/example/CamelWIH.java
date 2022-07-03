@@ -14,19 +14,13 @@ import org.springframework.stereotype.Component;
 public class CamelWIH extends AbstractLogOrThrowWorkItemHandler {
 	final static Logger LOG = LoggerFactory.getLogger(CamelWIH.class);
 
-    private CamelInit camelInit;
-
     @Autowired
-    private void init(CamelInit init) throws Exception {
-        LOG.info("Camel initialization");
-        camelInit = init;
-
-        camelInit.addRoutes(new OrderRouteBuilder());
-    }
+    private CamelInit camelInit;
 
     @Override
     public void executeWorkItem(WorkItem workItem, WorkItemManager manager) {
-        LOG.info("executeWorkItem: " + workItem.getName());
+        String endpointUri = (String) workItem.getParameter("endpointUri");
+        LOG.info("executeWorkItem: " + workItem.getName() + " endpointUri: " + endpointUri);
 
         try {
             ProducerTemplate template = camelInit.createProducerTemplate();
@@ -34,7 +28,7 @@ public class CamelWIH extends AbstractLogOrThrowWorkItemHandler {
             Exchange exchange = camelInit.getExchange()
                     .withBody(workItem.getParameter("Input"))
                     .build();
-            exchange = template.send("direct:start", exchange);
+            exchange = template.send(endpointUri, exchange);
 
             workItem.getResults().put("Output", exchange.getOut().getBody());
 
